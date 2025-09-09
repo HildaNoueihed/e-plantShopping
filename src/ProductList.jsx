@@ -250,6 +250,7 @@ function ProductList({ onHomeClick }) {
     };
 
     const handleContinueShopping = (e) => {
+        console.log("clicked");
         e.preventDefault();
         setShowCart(false);
     };
@@ -302,10 +303,7 @@ function ProductList({ onHomeClick }) {
                                     {/* Display other plant details like description and cost */}
                                     <div className="product-description">{plant.description}</div> {/* Display plant description */}
                                     <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
-                                    <button
-                                        className="product-button"
-                                        onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
-                                    >
+                                    <button style={{backgroundColor:alreadyInCart(plant.name)?"gray":"#615EFC"}} disabled={alreadyInCart(plant.name)? true:false} onClick={()=>handleAddToCart({name:plant.name,cost:plant.cost,image:plant.image})} className='product-button'>
                                         Add to Cart
                                     </button>
                                     </div>
